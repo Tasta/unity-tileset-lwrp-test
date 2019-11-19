@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4346fb22d36f8ae4eb5bcb7dfb69acf3, type: 3}
+  m_Name: W1_ObjectiveBrush
+  m_EditorClassIdentifier: 
+  m_Prefabs:
+  - {fileID: 8101108470587582728, guid: c12d35843851c1a4fb34f70b84956e95, type: 3}
+  m_PerlinScale: 0.5
+  m_Z: 0

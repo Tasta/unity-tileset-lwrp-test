@@ -2129,18 +2129,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 593095728}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &869670617 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8405672467463433618, guid: 9c3f236e6e56265469811394c26fbaee,
-    type: 3}
-  m_PrefabInstance: {fileID: 881013144}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc793b4e2ff5ad94fa061ff84e51be8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &881013144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2153,11 +2141,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
-    - target: {fileID: 8405672467463433618, guid: 9c3f236e6e56265469811394c26fbaee,
-        type: 3}
-      propertyPath: world
-      value: 
-      objectReference: {fileID: 1802186619}
     - target: {fileID: 8405672467463433622, guid: 9c3f236e6e56265469811394c26fbaee,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4928,7 +4911,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85bf3b520cc04c04bbb6ac840ff0f969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenes: []
+  startSceneIdx: 0
+  scenes:
+  - World1
+  - World2
 --- !u!4 &1232634065
 Transform:
   m_ObjectHideFlags: 0
@@ -5139,10 +5125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ee3a5ecda46ed44aac6b6c446f5ee9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hud: {fileID: 869670617}
   tilemap: {fileID: 1804487267}
   player: {fileID: 427225236}
-  game: {fileID: 1232634064}
 --- !u!1 &1804487266
 GameObject:
   m_ObjectHideFlags: 0

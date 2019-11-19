@@ -10,9 +10,18 @@ public class HUD : MonoBehaviour
     public Text actionMessage;
     public Animator animator;
     public Text objectiveLabel;
+    public Button button;
 
     // Link to the world
-    public World world;
+    private World world;
+
+    private void Awake() {
+        DontDestroyOnLoad(gameObject);
+    }
+
+    public void Bind(World world) {
+        this.world = world;
+    }
 
     public void OnBegin() {
         animator.Play("StartGame");
@@ -21,6 +30,11 @@ public class HUD : MonoBehaviour
     public void OnShowDone() {
         // Pass control to action phase
         world.StartPlay();
+    }
+
+    public IEnumerator OnLevelEnd() {
+        animator.Play("LevelDone");
+        yield return new WaitForSeconds(0.75f);
     }
 
     public void OnProgress(float progress) {

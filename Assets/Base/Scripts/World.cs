@@ -3,13 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class World : MonoBehaviour
 {
-    [Header("HUD object")]
-    public HUD hud;
-
     [Header("Tilemap parent of custom objects")]
     public Transform tilemap;
 
@@ -20,8 +16,9 @@ public class World : MonoBehaviour
     private List<Objective> beacons;
     private Teleport portal;
 
-    // Link to the game
-    public Game game;
+    // Links
+    private Game game;
+    private HUD hud;
 
     // Track items lit
     private int itemsLit = 0;
@@ -31,6 +28,8 @@ public class World : MonoBehaviour
      */
     public void Initialize(Game game) {
         this.game = game;
+        this.hud = game.hud;
+
         this.itemsLit = 0;
         OnProgress(0.0f);
     }
@@ -72,7 +71,7 @@ public class World : MonoBehaviour
     }
 
     private void OnTeleport() {
-        Debug.Log("ToDo: Swap scenes");
+        game.Advance();
     }
 
     /*
