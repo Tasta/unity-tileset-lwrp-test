@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Interactable : MonoBehaviour
+public abstract class Interactable : MonoBehaviour
 {
     // UI Components
     public Text hintLabel;
@@ -11,23 +12,27 @@ public class Interactable : MonoBehaviour
     public Animator animator;
 
     // Mark as lit
-    private bool lit = false;
-    private bool playerNearby = false;
+    protected bool lit = false;
+    protected bool playerNearby = false;
 
     // Hint to use
     [Header("Tooltip displayed when player is nearby")]
     public string hintMessage;
 
     // Links
-    private World world;
-    private InputDevice input;
+    protected World world;
+    protected InputDevice input;
+
+    // Callback to execute when object had interaction
+    protected Action callback;
 
     private void Awake() {
         hintLabel.text = hintMessage;
     }
 
-    public void Initialize(World world, InputDevice input) {
+    public void Initialize(World world, InputDevice input, Action callback) {
         this.world = world;
+        this.callback = callback;
 
         // Bind to input and listen for "Use" events
         if (this.input != null)
@@ -37,12 +42,7 @@ public class Interactable : MonoBehaviour
         this.input.action += OnAction;
     }
 
-    private void OnAction() {
-        if (!lit && playerNearby) {
-            lit = true;
-            animator.Play("LightUp");
-        }
-    }
+    protected abstract void OnAction();
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.name != "Player")

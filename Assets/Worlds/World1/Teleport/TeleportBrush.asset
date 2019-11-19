@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4346fb22d36f8ae4eb5bcb7dfb69acf3, type: 3}
-  m_Name: PrefabBrush
+  m_Name: TeleportBrush
   m_EditorClassIdentifier: 
   m_Prefabs:
-  - {fileID: 8101108470587582728, guid: c12d35843851c1a4fb34f70b84956e95, type: 3}
+  - {fileID: 6320408496681583115, guid: 90905812aedfd854595cb364417b570a, type: 3}
   m_PerlinScale: 0.5
   m_Z: 0

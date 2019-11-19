@@ -5,8 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class World 
-    : MonoBehaviour
+public class World : MonoBehaviour
 {
     [Header("HUD object")]
     public HUD hud;
@@ -18,17 +17,22 @@ public class World
     public PlayerController player;
 
     // Objects needed for game logic
-    private List<Interactable> beacons;
-    private Interactable portal;
+    private List<Objective> beacons;
+    private Teleport portal;
 
     // Link to the game
     public Game game;
+
+    // Track items lit
+    private int itemsLit = 0;
 
     /*
      * Initialize this world.
      */
     public void Initialize(Game game) {
         this.game = game;
+        this.itemsLit = 0;
+        OnProgress(0.0f);
     }
 
     /*
@@ -36,24 +40,39 @@ public class World
      */
     public void StartPlay() {
         // Initialize interactable objects
-        beacons = new List<Interactable>();
+        beacons = new List<Objective>();
         foreach (Transform child in tilemap) {
             if (child.name == "Objective") {
-                var interactable = child.GetComponent<Interactable>();
+                var interactable = child.GetComponent<Objective>();
                 if (interactable != null) {
                     beacons.Add(interactable);
-                    interactable.Initialize(this, game.input);
+                    interactable.Initialize(this, game.input, OnBeaconLit);
                 } else {
-                    Debug.LogWarning("Object in Interactable tilemap has no Interactable component.");
+                    Debug.LogWarning("Object in Interactable tilemap has no Objective component.");
                 }
-            } else if (child.name == "Portal") {
-                portal = child.GetComponent<Interactable>();
-                portal.Initialize(this, game.input);
+            } else if (child.name == "Teleport") {
+                portal = child.GetComponent<Teleport>();
+                portal.Initialize(this, game.input, OnTeleport);
+                portal.Hide();
             }
         }
 
         // Initialize player control
         player.Bind(game.input);
+    }
+
+    private void OnBeaconLit() {
+        itemsLit++;
+
+        if (itemsLit == beacons.Count) {
+            portal.Show();
+        }
+
+        OnProgress((float)itemsLit / beacons.Count);
+    }
+
+    private void OnTeleport() {
+        Debug.Log("ToDo: Swap scenes");
     }
 
     /*

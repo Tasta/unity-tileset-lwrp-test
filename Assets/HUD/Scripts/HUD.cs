@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class HUD : MonoBehaviour
 {
     // UI Components
+    public Text actionMessage;
     public Animator animator;
     public Text objectiveLabel;
 

@@ -126,13 +126,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8101108470587582728}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 663dfa9026e8b904e8facd821dba9f87, type: 3}
+  m_Script: {fileID: 11500000, guid: 6fdc678ef7b3ca4409c7a03aa15130eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hintLabel: {fileID: 8101108470947176215}
   hintGroup: {fileID: 8101108471325517724}
   animator: {fileID: 8101108470587582730}
-  hintMessage: Press <color=orange>Use</color> to lit.
+  hintMessage: Press <color=orange>Action</color> to light up.
 --- !u!95 &8101108470587582730
 Animator:
   serializedVersion: 3
@@ -235,7 +235,7 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 24
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 4
@@ -244,7 +244,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press <color=orange>Use</color> to lit.
+  m_Text: Press <color=orange>Action</color> to light up.
 --- !u!1 &8101108471325517714
 GameObject:
   m_ObjectHideFlags: 0
