@@ -25,6 +25,7 @@ public class HUD : MonoBehaviour
 
     public void OnBegin() {
         animator.Play("StartGame");
+        button.enabled = false;
     }
 
     public void OnShowDone() {
@@ -34,6 +35,7 @@ public class HUD : MonoBehaviour
 
     public IEnumerator OnLevelEnd() {
         animator.Play("LevelDone");
+        button.enabled = true;
         yield return new WaitForSeconds(0.75f);
     }
 
