@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Objective : Interactable
 {
-    protected override void OnAction() {
+    public override void OnAction() {
         if (!lit && playerNearby) {
             lit = true;
             animator.Play("LightUp");

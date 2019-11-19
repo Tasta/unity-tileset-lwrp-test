@@ -13,7 +13,7 @@ public class Teleport : Interactable
         animator.Play("LightUp");
     }
 
-    protected override void OnAction() {
+    public override void OnAction() {
         if (playerNearby) {
             callback.Invoke();
         }

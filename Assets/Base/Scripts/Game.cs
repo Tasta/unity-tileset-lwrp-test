@@ -26,7 +26,8 @@ public class Game : MonoBehaviour
         hud.actionMessage.text = "World 1\nTap to start";
 
         // Set input scheme
-        input = new KeyboardDevice();
+        //input = new KeyboardDevice();
+        input = new MouseDevice();
 
         // Init current world
         InitWorld();

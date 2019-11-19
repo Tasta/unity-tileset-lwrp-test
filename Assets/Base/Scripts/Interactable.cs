@@ -42,7 +42,7 @@ public abstract class Interactable : MonoBehaviour
         this.input.action += OnAction;
     }
 
-    protected abstract void OnAction();
+    public abstract void OnAction();
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.name != "Player")
