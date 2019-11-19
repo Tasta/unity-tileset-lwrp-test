@@ -14,8 +14,10 @@ public class Teleport : Interactable
     }
 
     public override void OnAction() {
-        if (playerNearby) {
+        // A hack. Kept |lit| as a flag for "Already Used"
+        if (playerNearby && !lit) {
             callback.Invoke();
+            lit = true;
         }
     }
 } // class Teleport
