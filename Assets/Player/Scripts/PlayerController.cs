@@ -5,40 +5,34 @@ using UnityEngine;
 /*
  * Attach this to the player object for movement.
  */
-public class PlayerController : MonoBehaviour
+public class PlayerController 
+    : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    const float oxDelta = 4.0f; // 4 units per second horizontally
+    const float oyDelta = 2.5f; // 2.5f units per second vertically (fake depth, whynot?)
+
+    // Bound control scheme
+    private InputDevice input;
+
+    public void Bind(InputDevice newDevice) {
+        if (input != null) {
+            input.move -= Move;
+        }
+
+        input = newDevice;
+        input.move += Move;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        const float oxDelta = 4.0f; // 1 unit per second
-        const float oyDelta = 2.5f; // 0.5f units per second
-
-        float xDelta = 0.0f, yDelta = 0.0f;
-        if (Input.GetKey(KeyCode.W)) {
-            yDelta = oyDelta * Time.deltaTime;
-        }
-
-        if (Input.GetKey(KeyCode.A)) {
-            xDelta = -oxDelta * Time.deltaTime;
-        }
-
-        if (Input.GetKey(KeyCode.S)) {
-            yDelta = -oyDelta * Time.deltaTime;
-        }
-
-        if (Input.GetKey(KeyCode.D)) {
-            xDelta = oxDelta * Time.deltaTime;
-        }
-
-        Vector3 pos = transform.localPosition;
-        pos.x += xDelta;
-        pos.y += yDelta;
+    public void Move(Vector2 dir) {
+        Vector2 pos = transform.localPosition;
+        pos.x += dir.x;
+        pos.y += dir.y;
         transform.localPosition = pos;
+    }
+
+    private void OnDestroy() {
+        if (input != null) {
+            input.move -= Move;
+        }
     }
 } // class PlayerController

@@ -18,25 +18,29 @@ public class Interactable : MonoBehaviour
     [Header("Tooltip displayed when player is nearby")]
     public string hintMessage;
 
-    // Link to the world these are in
+    // Links
     private World world;
+    private InputDevice input;
 
     private void Awake() {
         hintLabel.text = hintMessage;
     }
 
-    private void Initialize(World world) {
+    public void Initialize(World world, InputDevice input) {
         this.world = world;
 
-        // ToDo: Bind to input and listen for "Use" events
+        // Bind to input and listen for "Use" events
+        if (this.input != null)
+            this.input.action -= OnAction;
+
+        this.input = input;
+        this.input.action += OnAction;
     }
 
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.E)) {
-            if (!lit && playerNearby) {
-                lit = true;
-                animator.Play("LightUp");
-            }
+    private void OnAction() {
+        if (!lit && playerNearby) {
+            lit = true;
+            animator.Play("LightUp");
         }
     }
 
@@ -72,5 +76,10 @@ public class Interactable : MonoBehaviour
                  {
                      hintGroup.alpha = lerpF;
                  });
+    }
+
+    private void OnDestroy() {
+        if (input != null)
+            input.action -= OnAction;
     }
 } // class Interactable;

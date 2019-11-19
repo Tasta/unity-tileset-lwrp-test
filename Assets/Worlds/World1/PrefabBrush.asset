@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4346fb22d36f8ae4eb5bcb7dfb69acf3, type: 3}
-  m_Name: World1PrefabBrush
+  m_Name: PrefabBrush
   m_EditorClassIdentifier: 
   m_Prefabs:
   - {fileID: 8101108470587582728, guid: c12d35843851c1a4fb34f70b84956e95, type: 3}
