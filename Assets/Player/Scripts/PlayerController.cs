@@ -24,7 +24,10 @@ public class PlayerController
     }
 
     public void Move(Vector2 dir) {
-        Vector2 pos = transform.localPosition;
+        if (dir.magnitude == 0)
+            return;
+
+        Vector3 pos = transform.localPosition;
         pos.x += dir.x;
         pos.y += dir.y;
         transform.localPosition = pos;

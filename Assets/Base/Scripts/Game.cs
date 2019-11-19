@@ -27,7 +27,8 @@ public class Game : MonoBehaviour
 
         // Set input scheme
         //input = new KeyboardDevice();
-        input = new MouseDevice();
+        //input = new MouseDevice();
+        input = new GenericDevice();
 
         // Init current world
         InitWorld();
@@ -43,6 +44,10 @@ public class Game : MonoBehaviour
 
     private void Update() {
         input?.Update();
+
+        if (Input.GetKeyDown(KeyCode.Return)) {
+            Advance();
+        }
     }
 
     public void Advance() {
@@ -60,7 +65,7 @@ public class Game : MonoBehaviour
 
     private IEnumerator NextScene(string sceneName) {
         yield return hud.OnLevelEnd();
-        yield return SceneManager.LoadSceneAsync(sceneName);        
+        yield return SceneManager.LoadSceneAsync(sceneName);
         InitWorld();
     }
 } // class Game
